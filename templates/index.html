@@ -1,42 +1,57 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <Link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}"></Link>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <title>App</title>
 </head>
 <body>
     <div class="split left">
         <div class="centered">
-            <img src="../static/products/prod1.png" alt="">
+            <div class="image-container p-4">
+                <img src="../static/products/prod1.png" alt="" class="img-fluid rounded shadow-lg">
+            </div>
         </div>
     </div>
 
     <div class="split right">
         <div class="container mt-5 mb-5">
             <div class="d-flex justify-content-center row">
-                <div class="d-flex flex-column col-md-8">
-                    <div>
-                        <label for="">Positive Reviews: {{ data.positive }}</label>
+                <div class="d-flex flex-column col-md-10">
+                    <div class="stats-container mb-4 p-4 rounded-4 shadow">
+                        <div class="mb-3">
+                            <label class="badge-label positive-badge">
+                                <i class="bi bi-hand-thumbs-up-fill"></i> Positive Reviews: {{ data.positive }}
+                            </label>
+                        </div>
+                        <div>
+                            <label class="badge-label negative-badge">
+                                <i class="bi bi-hand-thumbs-down-fill"></i> Negative Reviews: {{ data.negative }}
+                            </label>
+                        </div>
                     </div>
-                    <div>
-                        <label for="">Negative Reviews: {{ data.negative }}</label>
-                    </div>
-                    <div>
+                    
+                    <div class="form-container p-4 rounded-4 shadow mb-4">
+                        <h5 class="text-white mb-3">Share Your Review</h5>
                         <form method="post">
-                            <textarea name="text"></textarea>
-                            <input type="submit">
+                            <textarea name="text" class="form-control custom-textarea mb-3" rows="4" placeholder="Write your review here..."></textarea>
+                            <button type="submit" class="btn btn-submit w-100">Submit Review</button>
                         </form>
                     </div>
-                    <div class="coment-bottom bg-white p-2 px-4">
+                    
+                    <div class="reviews-container p-4 rounded-4 shadow">
+                        <h5 class="reviews-title mb-4">Customer Reviews</h5>
                         {% for review in data.reviews %}
-                        <hr/>
-                        <div class="commented-section mt-2">
-
+                        <div class="review-item p-3 mb-3 rounded-3">
+                            <div class="d-flex align-items-start">
+                                <div class="avatar-circle me-3"></div>
+                                <div class="flex-grow-1">
+                                    <p class="review-text mb-0">{{ review }}</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="text-nowrap bd-highlight"><span>{{ review }}</span></div>
-                        <hr/>
                         {% endfor %}
                     </div>
                 </div>    

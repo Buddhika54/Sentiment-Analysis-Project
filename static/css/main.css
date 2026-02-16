@@ -1,9 +1,15 @@
-*{
-    font-family: sens-serif;
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 .split {
-    height: 100%;
+    height: 100vh;
     width: 50%;
     position: fixed;
     z-index: 1;
@@ -12,12 +18,24 @@
     padding-top: 20px;
 }
 
-.left{
+/* Left side - Purple gradient background */
+.left {
     left: 0;
+    background: linear-gradient(135deg, #8B5CF6 0%, #6366F1 50%, #EC4899 100%);
+    animation: gradientShift 8s ease infinite;
 }
 
+/* Right side - SAME gradient as left side */
 .right {
     right: 0;
+    background: linear-gradient(135deg, #8B5CF6 0%, #6366F1 50%, #EC4899 100%);
+    animation: gradientShift 8s ease infinite;
+    overflow-y: auto;
+}
+
+@keyframes gradientShift {
+    0%, 100% { filter: hue-rotate(0deg); }
+    50% { filter: hue-rotate(20deg); }
 }
 
 .centered {
@@ -26,26 +44,176 @@
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+    width: 80%;
+}
+
+/* Image container with contrasting background */
+.image-container {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 }
 
 .centered img {
     width: 100%;
+    max-width: 400px;
+    border-radius: 15px;
 }
 
-.textarea{
-    width: 100%;
-    height: 100px;
-    padding: 12px 20px;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    background-color: #f8f8f8;
-    font-size: 16px;
-    resize: none;
+/* Stats container */
+.stats-container {
+    background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+    border: 3px solid #FCD34D;
 }
 
-.comments {
-    text-decoration: underline;
-    text-underline-position: under;
-    cursor: pointer;
+.badge-label {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #1F2937;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.positive-badge {
+    background: linear-gradient(135deg, #34D399 0%, #10B981 100%);
+}
+
+.negative-badge {
+    background: linear-gradient(135deg, #FCA5A5 0%, #F87171 100%);
+}
+
+/* Form container */
+.form-container {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.form-container h5 {
+    color: #FEF3C7;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.custom-textarea {
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+    padding: 15px;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    color: #4C1D95;
+    transition: all 0.3s ease;
+}
+
+.custom-textarea:focus {
+    outline: none;
+    border-color: #FCD34D;
+    box-shadow: 0 0 0 4px rgba(252, 211, 77, 0.3);
+    background: white;
+}
+
+.custom-textarea::placeholder {
+    color: #A78BFA;
+}
+
+.btn-submit {
+    background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
+    border: none;
+    color: #1F2937;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 12px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #FCD34D 0%, #FBBF24 100%);
+}
+
+/* Reviews container */
+.reviews-container {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.reviews-title {
+    color: #FEF3C7;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.review-item {
+    background: rgba(255, 255, 255, 0.95);
+    border-left: 5px solid #FBBF24;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.review-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-left-color: #A855F7;
+}
+
+.avatar-circle {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+    flex-shrink: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.review-text {
+    color: #1F2937;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Scrollbar styling for right panel */
+.right::-webkit-scrollbar {
+    width: 10px;
+}
+
+.right::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.right::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #FBBF24 0%, #F59E0B 100%);
+    border-radius: 10px;
+}
+
+.right::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #FCD34D 0%, #FBBF24 100%);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .split {
+        width: 100%;
+        position: relative;
+        height: auto;
+    }
+    
+    .left {
+        height: 400px;
+    }
+    
+    .right {
+        height: auto;
+    }
 }
